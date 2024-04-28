@@ -143,7 +143,7 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <button type="button" class="btn btn-primary btn-download btn-cv"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</button><br>
+                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" target="_blank" class="btn btn-primary btn-download btn-cv"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
                 <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
@@ -225,7 +225,7 @@
                         <label for="message">Mensagem:</label>
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                    <button type="button" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
                 <div id="successMessage" style="display:none">
                     <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
@@ -269,19 +269,19 @@
             window.location.href = "https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b";
         });
 
-        $("#contactForm").submit(function (event) {
+        $(".btn-submit").click(function(event) {
             event.preventDefault();
-            var formData = $(this).serialize();
+            var formData = $('#contactForm').serialize();
             $.ajax({
                 type: "POST",
                 url: "https://formspree.io/f/xzbnopvy",
                 data: formData,
                 dataType: "json",
-                success: function () {
-                    $("#successMessage").show();
-                    $("#contactForm").trigger("reset");
+                success: function() {
+                    $('#successMessage').show();
+                    $('#contactForm')[0].reset();
                 },
-                error: function () {
+                error: function() {
                     alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
