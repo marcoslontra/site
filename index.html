@@ -92,6 +92,11 @@
         .btn-download {
             margin-top: 10px;
         }
+
+        .message {
+            display: none;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -133,89 +138,89 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid" alt="Project 1">
-                <div class="project-description">
-                    <h4>Dashboard de Desempenho Empresarial</h4>
-                    <p>O Dashboard de Desempenho Empresarial oferece uma visão abrangente do desempenho da empresa,
-                        destacando os principais indicadores que impactam diretamente o sucesso e a saúde do negócio.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid" alt="Project 2">
-                <div class="project-description">
-                    <h4>Dashboard de Vendas</h4>
-                    <p>Este projeto é uma ferramenta poderosa para impulsionar o crescimento e a eficiência das suas
-                        operações comerciais. Com ele, você terá acesso a uma visão completa do desempenho de vendas da
-                        sua empresa, permitindo tomar decisões estratégicas de forma rápida e precisa.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid" alt="Project 3">
-                <div class="project-description">
-                    <h4>Dashboard de NPS</h4>
-                    <p>Este Dashboard de NPS (Net Promoter Score) oferece uma visão detalhada da satisfação dos
-                        clientes, permitindo que você entenda melhor suas necessidades e tome decisões estratégicas
-                        para melhorar a experiência do cliente.</p>
-                </div>
+        <div class="col-md-12">
+            <div class="section-header">
+                <h2 class="section-title">Projetos</h2>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="contact-form">
-                <h2 class="section-title">Entre em Contato</h2>
-                <form action="https://formspree.io/f/xzbnopvy" method="POST">
-                    <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="_replyto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem:</label>
-                        <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
-                </form>
-            </div>
+        <div class="col-md-4 project-item">
+            <img src="static/img/project1.jpg" alt="Projeto 1">
+        </div>
+        <div class="col-md-4 project-item">
+            <img src="static/img/project2.jpg" alt="Projeto 2">
+        </div>
+        <div class="col-md-4 project-item">
+            <img src="static/img/project3.jpg" alt="Projeto 3">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-header">
+                <h2 class="section-title">Contato</h2>
+            </div>
+            <form id="contact-form" class="contact-form" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" id="message" name="message" placeholder="Sua mensagem" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                <div class="message">
+                    <p>Obrigado por sua mensagem!</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 
-<footer class="bg-dark text-white mt-5">
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="contact-icons">
-                    <a href="https://wa.me/5514998195368" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/marcos-henrique-b788a42a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:marcoslontra19@gmail.com?subject=&body=" target="_blank"><i class="far fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/marcos-henrique-lontra-2599a31b3/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/marcoslontra"><i class="fab fa-github"></i></a>
                 </div>
-                <p class="text-center">© 2024 Marcos Henrique. Todos os direitos reservados.</p>
             </div>
         </div>
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                document.getElementById("contact-form").reset(); // Reset form
+                document.querySelector(".message").style.display = "block"; // Show thank you message
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"
+        integrity="sha384-f5F1f3h/OGDaUm6PfOwzSlbAWdSHQt/bQMDyOwRr3FAv/Sdq2F3nROIKLs3UlFr5"
+        crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
+        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5Bk8ZEx3XlBnet0Uc7Pkz/XfO62DTEy3"
+        crossorigin="anonymous"></script>
 </body>
 </html>
