@@ -92,17 +92,6 @@
         .btn-download {
             margin-top: 10px;
         }
-
-        /* Message */
-        .message {
-            display: none;
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -189,7 +178,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form action="https://formspree.io/f/xzbnopvy" method="POST" id="contactForm">
+                <form id="contact-form" action="https://formspree.io/f/xzbnopvy" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -202,8 +191,8 @@
                         <label for="message">Mensagem:</label>
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
+                    <div id="status"></div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
-                    <div class="message" id="msg">Obrigado pela sua mensagem!</div>
                 </form>
             </div>
         </div>
@@ -225,15 +214,20 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#contactForm').submit(function () {
-            $('#msg').fadeIn();
-            return false;
+        $("#contact-form").submit(function (event) {
+            event.preventDefault();
+            var $form = $(this);
+            $.post($form.attr("action"), $form.serialize()).then(function () {
+                $("#status").html('<div class="alert alert-success">Obrigado! Sua mensagem foi enviada com sucesso.</div>');
+                $("#name").val("");
+                $("#email").val("");
+                $("#message").val("");
+            }).fail(function () {
+                $("#status").html('<div class="alert alert-danger">Desculpe, houve um problema ao enviar sua mensagem. Por favor, tente novamente mais tarde.</div>');
+            });
         });
     });
 </script>
