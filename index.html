@@ -1,82 +1,221 @@
-<style>
-    /* Add your CSS code */
-    body {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f9fa;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Add your CSS code */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
 
-    /* Jumbotron */
-    .jumbotron {
-        background-image: url('https://media.licdn.com/dms/image/D4D16AQGg1h-m9aFNKg/profile-displaybackgroundimage-shrink_350_1400/0/1712864742856?e=1719446400&v=beta&t=AaIQHiZQGlFIj6pinLYeK1EODMd1cjHMCCyp2Wm6khU');
-        background-size: cover;
-        background-attachment: fixed; /* Fixa a imagem para evitar rolagem */
-        color: #ffffff;
-        text-align: center;
-        padding: 100px 0;
-        max-height: 500px; /* Altura máxima para dispositivos móveis */
-    }
+        /* Jumbotron */
+        .jumbotron {
+            background-image: url('https://media.licdn.com/dms/image/D4D16AQGg1h-m9aFNKg/profile-displaybackgroundimage-shrink_350_1400/0/1712864742856?e=1719446400&v=beta&t=AaIQHiZQGlFIj6pinLYeK1EODMd1cjHMCCyp2Wm6khU');
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 150px 0;
+        }
 
-    /* Sobre Mim, Projetos, Contato */
-    .section-header {
-        padding: 30px 0;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+        /* Sobre Mim, Projetos, Contato */
+        .section-header {
+            padding: 50px 0;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
 
-    .section-title {
-        color: #343a40;
-        font-size: 28px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        .section-title {
+            color: #343a40;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    .section-content {
-        color: #343a40;
-        font-size: 16px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
+        .section-content {
+            color: #343a40;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px; /* Adicionando margem na parte inferior */
+        }
 
-    .section-content p {
-        margin-bottom: 10px;
-    }
+        .section-content p {
+            margin-bottom: 20px;
+        }
 
-    .project-item img {
-        transition: transform 0.3s ease-in-out;
-        max-width: 100%;
-        height: auto;
-    }
+        .project-item img {
+            transition: transform 0.3s ease-in-out;
+            max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
+            height: auto; /* Adicionado para garantir a responsividade das imagens */
+        }
 
-    .project-item img:hover {
-        transform: scale(1.1);
-    }
+        .project-item img:hover {
+            transform: scale(1.1);
+        }
 
-    /* Contact Form */
-    .contact-form {
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
-        padding: 20px;
-        margin-top: 20px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        /* Contact Form */
+        .contact-form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
+            padding: 30px; /* Reduzindo o padding para diminuir a altura */
+            margin-top: 50px;
+            max-width: 600px; /* Limitando a largura máxima */
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    /* Footer */
-    footer {
-        background-color: #343a40;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-    }
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    .contact-icons i {
-        font-size: 24px;
-        margin: 10px;
-        color: #fff;
-    }
-</style>
+        .contact-icons i {
+            font-size: 36px;
+            margin: 10px;
+            color: #fff;
+        }
+
+        /* Espaçamento entre os botões */
+        .btn-download {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <!-- <h1 class="display-4">Portfólio Marcos Henrique</h1> -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-content">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p>Atuei no Planejamento Inbound realizando o acompanhamento de Real Time das carteiras operacionais,
+                    onde realizava o desenvolvimento de Painéis Gerenciais para análise de KPI, além de contribuir para
+                    estratégias de performance e entrega de SLA. Possuo experiência em análise de dados, previsão e
+                    estratégia de negócios. Capacitado em desenvolver e implementar planos estratégicos que impulsionam
+                    o crescimento e a eficiência operacional. Sou dedicado, orientado para resultados e apaixonado por
+                    transformar insights em ações tangíveis. Estou comprometido em contribuir para o sucesso da
+                    organização, utilizando minha experiência e habilidades para impulsionar o crescimento e a eficiência.
+                    Estou aberto a oportunidades de networking e colaboração.</p>
+                <h3>Habilidades</h3>
+                <ul>
+                    <li>Acompanhamento de KPIs</li>
+                    <li>Real Time</li>
+                    <li>Desenvolvimento de relatórios e painéis analíticos</li>
+                    <li>Relacionamento com cliente</li>
+                    <li>CX</li>
+                    <li>Excel avançado</li>
+                    <li>Ferramentas de BI</li>
+                    <li>Planejamento Estratégico</li>
+                    <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
+                    <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
+                </ul>
+                <a href="https://drive.google.com/uc?export=download&id=1Sc4FL0jiwphYv_-cIh6MZRjz-lpLaJTq" download="curriculo-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="project-item">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid" alt="Project 1">
+                <div class="project-description">
+                    <h4>Dashboard de Desempenho Empresarial</h4>
+                    <p>O Dashboard de Desempenho Empresarial oferece uma visão abrangente do desempenho da empresa,
+                        destacando os principais indicadores que impactam diretamente o sucesso e a saúde do negócio.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-item">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid" alt="Project 2">
+                <div class="project-description">
+                    <h4>Dashboard de Vendas</h4>
+                    <p>Este projeto é uma ferramenta poderosa para impulsionar o crescimento e a eficiência das suas
+                        operações comerciais. Com ele, você terá acesso a uma visão completa do desempenho de vendas da
+                        sua empresa, permitindo tomar decisões estratégicas de forma rápida e precisa.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-item">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid" alt="Project 3">
+                <div class="project-description">
+                    <h4>Dashboard de NPS</h4>
+                    <p>Este Dashboard de NPS (Net Promoter Score) oferece uma visão detalhada da satisfação dos
+                        clientes, permitindo que você entenda melhor suas necessidades e tome decisões estratégicas
+                        para melhorar a experiência do cliente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="contact-form">
+                <h2 class="section-title">Entre em Contato</h2>
+                <form action="https://formspree.io/f/xzbnopvy" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="form-control" id="name" name="Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" class="form-control" id="email" name="_replyto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-icons">
+                    <a href="https://wa.me/5514998195368" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/marcos-henrique-b788a42a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:marcoslontra19@gmail.com?subject=&body=" target="_blank"><i class="far fa-envelope"></i></a>
+                </div>
+                <p class="text-center">© 2024 Marcos Henrique. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
+</body>
+</html>
