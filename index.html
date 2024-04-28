@@ -21,9 +21,16 @@
         .jumbotron {
             background-image: url('https://github.com/marcoslontra/site/blob/main/static/img/project4.jpg?raw=true');
             background-size: cover;
+            background-position: center;
             color: #ffffff;
             text-align: center;
             padding: 150px 0;
+        }
+
+        @media (max-width: 768px) {
+            .jumbotron {
+                background-size: 100% auto;
+            }
         }
 
         /* Sobre Mim, Projetos, Contato */
