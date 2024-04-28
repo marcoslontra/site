@@ -56,7 +56,6 @@
             transition: transform 0.3s ease-in-out;
             max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
             height: auto; /* Adicionado para garantir a responsividade das imagens */
-            cursor: pointer; /* Adicionado para indicar que a imagem é clicável */
         }
 
         .project-item img:hover {
@@ -95,9 +94,25 @@
         }
 
         /* Modal */
+        .modal-content {
+            background-color: transparent;
+            border: none;
+        }
+
         .modal-dialog {
-            max-width: 90vw;
+            max-width: 80%;
             margin: 30px auto;
+        }
+
+        .modal-body {
+            padding: 0;
+            text-align: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -145,8 +160,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid project-image" alt="Project 1">
+            <div class="project-item" data-toggle="modal" data-target="#project1">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid" alt="Project 1">
                 <div class="project-description">
                     <h4>Dashboard de Desempenho Empresarial</h4>
                     <p>O Dashboard de Desempenho Empresarial oferece uma visão abrangente do desempenho da empresa,
@@ -156,8 +171,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid project-image" alt="Project 2">
+            <div class="project-item" data-toggle="modal" data-target="#project2">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid" alt="Project 2">
                 <div class="project-description">
                     <h4>Dashboard de Vendas</h4>
                     <p>Este projeto é uma ferramenta poderosa para impulsionar o crescimento e a eficiência das suas
@@ -167,8 +182,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid project-image" alt="Project 3">
+            <div class="project-item" data-toggle="modal" data-target="#project3">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid" alt="Project 3">
                 <div class="project-description">
                     <h4>Dashboard de NPS</h4>
                     <p>Este Dashboard de NPS (Net Promoter Score) oferece uma visão detalhada da satisfação dos
@@ -180,12 +195,34 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<!-- Modal Project 1 -->
+<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="project1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <img class="img-fluid" id="modalImage" src="" alt="Project Image">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid" alt="Project 1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Project 2 -->
+<div class="modal fade" id="project2" tabindex="-1" role="dialog" aria-labelledby="project2Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid" alt="Project 2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Project 3 -->
+<div class="modal fade" id="project3" tabindex="-1" role="dialog" aria-labelledby="project3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid" alt="Project 3">
             </div>
         </div>
     </div>
@@ -196,24 +233,21 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm">
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="Nome" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="_replyto" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem:</label>
-                        <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
-                <div id="successMessage" style="display:none">
-                    <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
-                </div>
             </div>
         </div>
     </div>
@@ -236,31 +270,13 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
-        $(".project-item").click(function () {
-            var imageUrl = $(this).find("img").attr("src");
-            $("#modalImage").attr("src", imageUrl);
-            $("#projectModal").modal("show");
-        });
-
-        $("#contactForm").submit(function (event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "https://formspree.io/f/xzbnopvy",
-                data: formData,
-                dataType: "json",
-                success: function () {
-                    $("#successMessage").show();
-                    $("#contactForm").trigger("reset");
-                },
-                error: function () {
-                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
-                }
-            });
+    $(function () {
+        $('.project-item').on('click', function () {
+            var imgSrc = $(this).find('img').attr('src');
+            $('#exampleModalCenter').find('img').attr('src', imgSrc);
         });
     });
 </script>
