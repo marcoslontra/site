@@ -1,0 +1,85 @@
+<style>
+    /* Add your CSS code */
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    /* Jumbotron */
+    .jumbotron {
+        background-image: url('https://media.licdn.com/dms/image/D4D16AQGg1h-m9aFNKg/profile-displaybackgroundimage-shrink_350_1400/0/1712864742856?e=1719446400&v=beta&t=AaIQHiZQGlFIj6pinLYeK1EODMd1cjHMCCyp2Wm6khU');
+        background-size: cover;
+        color: #ffffff;
+        text-align: center;
+        padding: 150px 0;
+    }
+
+    /* Sobre Mim, Projetos, Contato */
+    .section-header {
+        padding: 50px 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        color: #343a40;
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .section-content {
+        color: #343a40;
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 30px; /* Adicionando margem na parte inferior */
+    }
+
+    .section-content p {
+        margin-bottom: 20px;
+    }
+
+    .project-item img {
+        transition: transform 0.3s ease-in-out;
+        max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
+        height: auto; /* Adicionado para garantir a responsividade das imagens */
+    }
+
+    .project-item img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Contact Form */
+    .contact-form {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
+        padding: 30px; /* Reduzindo o padding para diminuir a altura */
+        margin-top: 50px;
+        max-width: 600px; /* Limitando a largura máxima */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .contact-icons i {
+        font-size: 36px;
+        margin: 10px;
+        color: #fff;
+    }
+
+    /* Espaçamento entre os botões */
+    .btn-download {
+        margin-top: 10px;
+    }
+</style>
