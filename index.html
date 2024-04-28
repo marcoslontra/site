@@ -212,7 +212,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm" method="POST">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -250,7 +250,7 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
@@ -265,9 +265,9 @@
             $("#projectModal").modal("show");
         });
 
-        $("#contactForm").submit(function (e) {
-            e.preventDefault();
-            var formData = $(this).serialize();
+        $("#contactForm").submit(function(e) {
+            e.preventDefault(); // Evita que o formulário seja submetido normalmente
+            var formData = $(this).serialize(); // Serializa os dados do formulário
             $.ajax({
                 type: "POST",
                 url: "https://formspree.io/f/xzbnopvy",
