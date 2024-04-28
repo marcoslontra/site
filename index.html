@@ -93,11 +93,15 @@
             margin-top: 10px;
         }
 
+        /* Message */
         .message {
             display: none;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
             text-align: center;
-            color: green;
-            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -185,7 +189,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contact-form" action="https://formspree.io/f/xzbnopvy" method="POST">
+                <form id="contactForm" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -199,9 +203,7 @@
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
-                    <div class="message">
-                        <p>Obrigado por sua mensagem!</p>
-                    </div>
+                    <div class="message" id="success">Obrigado! Sua mensagem foi enviada com sucesso.</div>
                 </form>
             </div>
         </div>
@@ -229,7 +231,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('#contact-form').submit(function (e) {
+        $('#contactForm').submit(function (e) {
             e.preventDefault();
             $.ajax({
                 url: 'https://formspree.io/f/xzbnopvy',
@@ -237,14 +239,15 @@
                 data: $(this).serialize(),
                 dataType: 'json',
                 beforeSend: function () {
-                    $('.btn-submit').attr('disabled', true);
-                    $('.btn-submit').html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                    $('.message').removeClass('alert alert-success');
+                    $('.message').html('');
                 },
                 success: function (data) {
-                    $('.message').css('display', 'block');
-                    $('#name, #email, #message').val('');
-                    $('.btn-submit').html('Enviar Mensagem');
-                    $('.btn-submit').attr('disabled', false);
+                    $('#success').addClass('alert alert-success').html('Obrigado! Sua mensagem foi enviada com sucesso.');
+                    $('#contactForm').trigger('reset');
+                },
+                error: function (err) {
+                    $('#success').addClass('alert alert-danger').html('Desculpe! Houve um erro ao enviar sua mensagem.');
                 }
             });
         });
