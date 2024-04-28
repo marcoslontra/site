@@ -99,37 +99,9 @@
             max-width: 90vw;
             margin: 30px auto;
         }
-        
-        .modal-content {
-            background-color: transparent;
-            border: none;
-        }
-        
-        .modal-body {
-            display: flex;
-            align-items: center;
-        }
-        
-        .modal-image {
-            width: 50%;
-            margin-right: 20px;
-        }
-        
+
         .modal-description {
-            width: 50%;
-        }
-        
-        .modal-description h4 {
-            color: #343a40;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .modal-description p {
-            color: #343a40;
-            font-size: 18px;
-            line-height: 1.8;
+            color: #fff;
         }
     </style>
 </head>
@@ -214,15 +186,17 @@
 
 <!-- Modal -->
 <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <img class="img-fluid modal-image" id="modalImage" src="" alt="Project Image">
-                <div class="modal-description">
-                    <h4>Dashboard de Desempenho Empresarial</h4>
-                    <p>O Dashboard de Desempenho Empresarial oferece uma visão abrangente do desempenho da empresa,
-                        destacando os principais indicadores que impactam diretamente o sucesso e a saúde do negócio.
-                    </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" id="modalImage" src="" alt="Project Image">
+                    </div>
+                    <div class="col-md-6 modal-description">
+                        <h4 id="modalTitle"></h4>
+                        <p id="modalText"></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -280,10 +254,10 @@
         $(".project-item").click(function () {
             var imageUrl = $(this).find("img").attr("src");
             var title = $(this).find(".project-description h4").text();
-            var description = $(this).find(".project-description p").text();
+            var text = $(this).find(".project-description p").text();
             $("#modalImage").attr("src", imageUrl);
-            $(".modal-description h4").text(title);
-            $(".modal-description p").text(description);
+            $("#modalTitle").text(title);
+            $("#modalText").text(text);
             $("#projectModal").modal("show");
         });
 
