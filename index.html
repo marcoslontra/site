@@ -190,23 +190,23 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm">
+                <form id="contact-form" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="Nome" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="_replyto" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem:</label>
-                        <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
-                <div class="message"></div>
-                <div class="error-message"></div>
+                <div class="message">Obrigado! Sua mensagem foi enviada com sucesso.</div>
+                <div class="error-message">Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.</div>
             </div>
         </div>
     </div>
@@ -227,23 +227,31 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#contactForm').submit(function (event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+            var formData = {
+                'name': $('#name').val(),
+                'email': $('#email').val(),
+                'message': $('#message').val()
+            };
             $.ajax({
                 type: 'POST',
                 url: 'https://formspree.io/f/xzbnopvy',
                 data: formData,
                 dataType: 'json',
-                success: function () {
-                    $('.message').addClass('show').html('Obrigado! Sua mensagem foi enviada com sucesso.');
-                    $('#contactForm')[0].reset();
+                encode: true,
+                success: function (data) {
+                    $(".message").css("display", "block");
+                    $(".error-message").css("display", "none");
                 },
                 error: function () {
-                    $('.error-message').addClass('show').html('Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.');
+                    $(".message").css("display", "none");
+                    $(".error-message").css("display", "block");
                 }
             });
         });
