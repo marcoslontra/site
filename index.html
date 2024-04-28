@@ -143,7 +143,7 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" target="_blank" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
                 <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
@@ -227,61 +227,38 @@
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
-                <div id="successMessage" style="display:none">
-                    <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
-<footer class="bg-dark text-white mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="contact-icons">
-                    <a href="https://wa.me/5514998195368" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/marcos-henrique-b788a42a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:marcoslontra19@gmail.com?subject=&body=" target="_blank"><i class="far fa-envelope"></i></a>
-                </div>
-                <p class="text-center">© 2024 Marcos Henrique. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-v8r/i0WMk0vcWMLXjoJxP5dzXDsDT5gjzTsSLeE3Yvf8fJcf+bOvD+hXf2n9a7n4"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $(".project-item").click(function () {
-            var imageUrl = $(this).find("img").attr("src");
-            var title = $(this).find(".project-description h4").text();
-            var text = $(this).find(".project-description p").text();
-            $("#modalImage").attr("src", imageUrl);
-            $("#modalTitle").text(title);
-            $("#modalText").text(text);
-            $("#projectModal").modal("show");
+    function submitForm() {
+        var form = $('#contactForm');
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function () {
+                alert('Mensagem enviada com sucesso!');
+                $('#contactForm')[0].reset();
+            }
         });
+    }
 
-        $("#contactForm").submit(function(e) {
-            e.preventDefault(); // Evita que o formulário seja submetido normalmente
-            var formData = $(this).serialize(); // Serializa os dados do formulário
-            $.ajax({
-                type: "POST",
-                url: "https://formspree.io/f/xzbnopvy",
-                data: formData,
-                dataType: "json",
-                success: function () {
-                    $("#successMessage").show();
-                    $("#contactForm")[0].reset();
-                },
-                error: function () {
-                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
-                }
-            });
-        });
+    $('#contactForm').on('submit', function (e) {
+        e.preventDefault();
+        submitForm();
     });
 </script>
 
