@@ -92,6 +92,31 @@
         .btn-download {
             margin-top: 10px;
         }
+
+        /* Message */
+        .message {
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            color: #dc3545;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -178,7 +203,9 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contact-form" action="https://formspree.io/f/xzbnopvy" method="POST">
+                <div class="message"></div>
+                <div class="error-message"></div>
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -191,7 +218,6 @@
                         <label for="message">Mensagem:</label>
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
-                    <div id="status"></div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
             </div>
@@ -215,18 +241,27 @@
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function () {
-        $("#contact-form").submit(function (event) {
+        $('#contactForm').submit(function (event) {
             event.preventDefault();
-            var $form = $(this);
-            $.post($form.attr("action"), $form.serialize()).then(function () {
-                $("#status").html('<div class="alert alert-success">Obrigado! Sua mensagem foi enviada com sucesso.</div>');
-                $("#name").val("");
-                $("#email").val("");
-                $("#message").val("");
-            }).fail(function () {
-                $("#status").html('<div class="alert alert-danger">Desculpe, houve um problema ao enviar sua mensagem. Por favor, tente novamente mais tarde.</div>');
+            var formData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'https://formspree.io/f/xzbnopvy',
+                data: formData,
+                dataType: 'json',
+                success: function () {
+                    $('.message').addClass('show').html('Obrigado! Sua mensagem foi enviada com sucesso.');
+                    $('#contactForm')[0].reset();
+                },
+                error: function () {
+                    $('.error-message').addClass('show').html('Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.');
+                }
             });
         });
     });
