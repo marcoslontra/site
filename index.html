@@ -150,8 +150,8 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
-                <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
+                <a id="curriculoLink" href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a id="portfolioLink" href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
     </div>
@@ -288,6 +288,19 @@
                     alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
+        });
+
+        // Script para iniciar o download automaticamente ao clicar nos links de download
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        $("#curriculoLink").click(function(){
+            if (isMobile) {
+                window.location.href = "https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b";
+            }
+        });
+        $("#portfolioLink").click(function(){
+            if (isMobile) {
+                window.location.href = "https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN";
+            }
         });
     });
 </script>
