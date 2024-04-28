@@ -92,6 +92,13 @@
         .btn-download {
             margin-top: 10px;
         }
+
+        .message {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -178,7 +185,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form action="https://formspree.io/f/xzbnopvy" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/xzbnopvy" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -192,6 +199,9 @@
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                    <div class="message">
+                        <p>Obrigado por sua mensagem!</p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -217,5 +227,28 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'https://formspree.io/f/xzbnopvy',
+                method: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('.btn-submit').attr('disabled', true);
+                    $('.btn-submit').html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                },
+                success: function (data) {
+                    $('.message').css('display', 'block');
+                    $('#name, #email, #message').val('');
+                    $('.btn-submit').html('Enviar Mensagem');
+                    $('.btn-submit').attr('disabled', false);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
