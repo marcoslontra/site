@@ -100,12 +100,17 @@
             margin: 30px auto;
         }
 
-        .modal-content {
-            background-color: transparent;
+        /* Modal body */
+        .modal-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Project description in modal */
         .modal-description {
-            color: #fff;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -143,7 +148,7 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <a href="https://drive.google.com/uc?export=download&id=1Sc4FL0jiwphYv_-cIh6MZRjz-lpLaJTq" download="curriculo-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a href="https://drive.google.com/file/d/121p66BI4l51ujTgVpZFic4_y-HOh7C8b/view?usp=sharing" download="curriculo-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
                 <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
@@ -193,14 +198,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img class="img-fluid" id="modalImage" src="" alt="Project Image">
-                    </div>
-                    <div class="col-md-6 modal-description">
-                        <h4 id="modalTitle"></h4>
-                        <p id="modalText"></p>
-                    </div>
+                <img class="img-fluid" id="modalImage" src="" alt="Project Image">
+                <div class="modal-description">
+                    <h4 class="text-white" id="modalTitle"></h4>
+                    <p class="text-white" id="modalText"></p>
                 </div>
             </div>
         </div>
@@ -281,10 +282,6 @@
                     alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
-        });
-
-        $('#projectModal').on('show.bs.modal', function (e) {
-            $('.modal-description').css('color', '#fff');
         });
     });
 </script>
