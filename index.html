@@ -56,6 +56,7 @@
             transition: transform 0.3s ease-in-out;
             max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
             height: auto; /* Adicionado para garantir a responsividade das imagens */
+            cursor: pointer; /* Adicionado para indicar que a imagem é clicável */
         }
 
         .project-item img:hover {
@@ -93,16 +94,10 @@
             margin-top: 10px;
         }
 
-        .message {
-            display: none;
-            margin-top: 10px;
-            color: green;
-        }
-
-        .error-message {
-            display: none;
-            margin-top: 10px;
-            color: red;
+        /* Modal */
+        .modal-dialog {
+            max-width: 90vw;
+            margin: 30px auto;
         }
     </style>
 </head>
@@ -151,7 +146,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid" alt="Project 1">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project1.jpg?raw=true" class="img-fluid project-image" alt="Project 1">
                 <div class="project-description">
                     <h4>Dashboard de Desempenho Empresarial</h4>
                     <p>O Dashboard de Desempenho Empresarial oferece uma visão abrangente do desempenho da empresa,
@@ -162,7 +157,7 @@
         </div>
         <div class="col-md-4">
             <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid" alt="Project 2">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project2.jpg?raw=true" class="img-fluid project-image" alt="Project 2">
                 <div class="project-description">
                     <h4>Dashboard de Vendas</h4>
                     <p>Este projeto é uma ferramenta poderosa para impulsionar o crescimento e a eficiência das suas
@@ -173,7 +168,7 @@
         </div>
         <div class="col-md-4">
             <div class="project-item">
-                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid" alt="Project 3">
+                <img src="https://github.com/marcoslontra/site/blob/main/static/img/project3.jpg?raw=true" class="img-fluid project-image" alt="Project 3">
                 <div class="project-description">
                     <h4>Dashboard de NPS</h4>
                     <p>Este Dashboard de NPS (Net Promoter Score) oferece uma visão detalhada da satisfação dos
@@ -185,28 +180,40 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="img-fluid" id="modalImage" src="" alt="Project Image">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contact-form" method="POST">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="Nome" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="_replyto" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem:</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
-                <div class="message">Obrigado! Sua mensagem foi enviada com sucesso.</div>
-                <div class="error-message">Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.</div>
+                <div id="successMessage" style="display:none">
+                    <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -232,26 +239,26 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#contact-form').submit(function (e) {
-            e.preventDefault();
-            var formData = {
-                'name': $('#name').val(),
-                'email': $('#email').val(),
-                'message': $('#message').val()
-            };
+        $(".project-item").click(function () {
+            var imageUrl = $(this).find("img").attr("src");
+            $("#modalImage").attr("src", imageUrl);
+            $("#projectModal").modal("show");
+        });
+
+        $("#contactForm").submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
             $.ajax({
-                type: 'POST',
-                url: 'https://formspree.io/f/xzbnopvy',
+                type: "POST",
+                url: "https://formspree.io/f/xzbnopvy",
                 data: formData,
-                dataType: 'json',
-                encode: true,
-                success: function (data) {
-                    $(".message").css("display", "block");
-                    $(".error-message").css("display", "none");
+                dataType: "json",
+                success: function () {
+                    $("#successMessage").show();
+                    $("#contactForm").trigger("reset");
                 },
                 error: function () {
-                    $(".message").css("display", "none");
-                    $(".error-message").css("display", "block");
+                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
         });
