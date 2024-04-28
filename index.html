@@ -189,7 +189,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm" method="POST">
+                <form action="https://formspree.io/f/xzbnopvy" method="POST" id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -203,7 +203,7 @@
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
-                    <div class="message" id="success">Obrigado! Sua mensagem foi enviada com sucesso.</div>
+                    <div class="message" id="msg">Obrigado pela sua mensagem!</div>
                 </form>
             </div>
         </div>
@@ -231,25 +231,9 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5E8/VIsg/dckxDX+kE0VKt6o7Ka8d6Wo" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('#contactForm').submit(function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: 'https://formspree.io/f/xzbnopvy',
-                method: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                beforeSend: function () {
-                    $('.message').removeClass('alert alert-success');
-                    $('.message').html('');
-                },
-                success: function (data) {
-                    $('#success').addClass('alert alert-success').html('Obrigado! Sua mensagem foi enviada com sucesso.');
-                    $('#contactForm').trigger('reset');
-                },
-                error: function (err) {
-                    $('#success').addClass('alert alert-danger').html('Desculpe! Houve um erro ao enviar sua mensagem.');
-                }
-            });
+        $('#contactForm').submit(function () {
+            $('#msg').fadeIn();
+            return false;
         });
     });
 </script>
