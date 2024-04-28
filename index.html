@@ -212,7 +212,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/xzbnopvy" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -227,21 +227,32 @@
                     </div>
                     <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
+                <div id="successMessage" style="display:none">
+                    <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-        integrity="sha384-v8r/i0WMk0vcWMLXjoJxP5dzXDsDT5gjzTsSLeE3Yvf8fJcf+bOvD+hXf2n9a7n4"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-        crossorigin="anonymous"></script>
+<footer class="bg-dark text-white mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-icons">
+                    <a href="https://wa.me/5514998195368" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/marcos-henrique-b788a42a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:marcoslontra19@gmail.com?subject=&body=" target="_blank"><i class="far fa-envelope"></i></a>
+                </div>
+                <p class="text-center">© 2024 Marcos Henrique. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function submitForm() {
         var form = $('#contactForm');
