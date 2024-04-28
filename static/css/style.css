@@ -11,20 +11,9 @@
     .jumbotron {
         background-image: url('https://media.licdn.com/dms/image/D4D16AQGg1h-m9aFNKg/profile-displaybackgroundimage-shrink_350_1400/0/1712864742856?e=1719446400&v=beta&t=AaIQHiZQGlFIj6pinLYeK1EODMd1cjHMCCyp2Wm6khU');
         background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
         color: #ffffff;
         text-align: center;
         padding: 150px 0;
-    }
-
-    @media (max-width: 768px) {
-        .jumbotron {
-            background-size: cover;
-            background-position: center;
-            background-attachment: scroll;
-            padding: 100px 0;
-        }
     }
 
     /* Sobre Mim, Projetos, Contato */
