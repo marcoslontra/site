@@ -45,7 +45,7 @@
             color: #343a40;
             font-size: 36px;
             font-weight: 700;
-            text-align: center;
+            text-align: left; /* Alterado para o canto esquerdo */
             margin-bottom: 30px;
         }
 
@@ -100,13 +100,24 @@
         /* Espaçamento entre os botões */
         .btn-download {
             margin-top: 10px;
-            background-color: #343a40;
+        }
+
+        /* Alteração da cor da linha de contorno para branco */
+        .section-title::before {
+            background-color: #fff;
+        }
+
+        /* Alteração da cor do texto e de fundo dos botões de download */
+        .btn-download {
             color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
         }
 
         .btn-download:hover {
-            background-color: #292929;
-            color: #fff;
+            color: #343a40;
+            background-color: #fff;
+            border-color: #343a40;
         }
 
         /* Modal */
@@ -296,6 +307,21 @@
                     alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
+        });
+
+        // Adicionando download automático para dispositivos móveis
+        $(".btn-download").on('click', function(event) {
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                var downloadUrl = $(this).attr('href');
+                var fileName = $(this).attr('download');
+                var link = document.createElement('a');
+                link.href = downloadUrl;
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                return false;
+            }
         });
     });
 </script>
