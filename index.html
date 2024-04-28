@@ -225,7 +225,7 @@
                         <label for="message">Mensagem:</label>
                         <textarea class="form-control" id="message" name="Mensagem" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                    <button type="button" onclick="submitForm()" class="btn btn-submit">Enviar Mensagem</button>
                 </form>
                 <div id="successMessage" style="display:none">
                     <p>Obrigado! Sua mensagem foi enviada com sucesso.</p>
@@ -254,6 +254,24 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+    function submitForm() {
+        var formData = $("#contactForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "https://formspree.io/f/xzbnopvy",
+            data: formData,
+            dataType: "json",
+            success: function () {
+                $("#successMessage").show();
+                $("#contactForm")[0].reset();
+            },
+            error: function () {
+                alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
+            }
+        });
+        return false;
+    }
+
     $(document).ready(function () {
         $(".project-item").click(function () {
             var imageUrl = $(this).find("img").attr("src");
@@ -264,29 +282,8 @@
             $("#modalText").text(text);
             $("#projectModal").modal("show");
         });
-
-        $("#contactForm").submit(function (event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "https://formspree.io/f/xzbnopvy",
-                data: formData,
-                dataType: "json",
-                success: function () {
-                    $("#successMessage").show();
-                    $("#contactForm")[0].reset();
-                },
-                error: function () {
-                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
-                }
-            });
-        });
-
-        $('#projectModal').on('show.bs.modal', function (e) {
-            $('.modal-description').css('color', '#fff');
-        });
     });
 </script>
+
 </body>
 </html>
