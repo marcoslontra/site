@@ -260,9 +260,13 @@
             type: form.attr('method'),
             url: form.attr('action'),
             data: form.serialize(),
+            dataType: 'json',
             success: function () {
-                alert('Mensagem enviada com sucesso!');
-                $('#contactForm')[0].reset();
+                $("#successMessage").show();
+                $("#contactForm")[0].reset();
+            },
+            error: function () {
+                alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
             }
         });
     }
