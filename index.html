@@ -212,7 +212,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form">
                 <h2 class="section-title">Entre em Contato</h2>
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/xzbnopvy" method="POST">
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="Nome" required>
@@ -263,24 +263,6 @@
             $("#modalTitle").text(title);
             $("#modalText").text(text);
             $("#projectModal").modal("show");
-        });
-
-        $("#contactForm").submit(function (event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "https://formspree.io/f/xzbnopvy",
-                data: formData,
-                dataType: "json",
-                success: function () {
-                    $("#successMessage").show();
-                    $("#contactForm").trigger("reset");
-                },
-                error: function () {
-                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
-                }
-            });
         });
 
         $('#projectModal').on('show.bs.modal', function (e) {
