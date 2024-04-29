@@ -115,13 +115,6 @@
         .modal-description {
             color: #fff;
         }
-
-        /* Remove blue color when button clicked */
-        .btn:active,
-        .btn:focus {
-            outline: none;
-            box-shadow: none;
-        }
     </style>
 </head>
 <body>
@@ -158,7 +151,7 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-dark btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" download="Curriculo_Marcos.pdf" class="btn btn-dark btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
                 <a href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-dark btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
@@ -280,6 +273,13 @@
             $("#projectModal").modal("show");
         });
 
+        $(".btn-download").on("click", function(event) {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location.href = $(this).attr("href");
+                return false;
+            }
+        });
+
         $("#contactForm").submit(function(e) {
             e.preventDefault(); // Evita que o formulário seja submetido normalmente
             var formData = $(this).serialize(); // Serializa os dados do formulário
@@ -296,14 +296,6 @@
                     alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
                 }
             });
-        });
-
-        // Adicionando download automático para dispositivos móveis
-        $(".btn-download").on("click", function(event) {
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                window.location.href = $(this).attr("href");
-                return false;
-            }
         });
     });
 </script>
