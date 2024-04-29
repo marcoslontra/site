@@ -193,8 +193,7 @@
             </div>
         </div>
     </div>
-    <!-- Novas imagens -->
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-md-4">
             <div class="project-item">
                 <img src="https://github.com/marcoslontra/site/blob/main/static/img/project5.jpg?raw=true" class="img-fluid project-image" alt="Project 5">
@@ -295,16 +294,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".project-item").click(function () {
-            var imageUrl = $(this).find("img").attr("src");
-            var title = $(this).find(".project-description h4").text();
-            var text = $(this).find(".project-description p").text();
-            $("#modalImage").attr("src", imageUrl);
-            $("#modalTitle").text(title);
-            $("#modalText").text(text);
-            $("#projectModal").modal("show");
-        });
-
         $("#contactForm").submit(function(e) {
             e.preventDefault(); // Evita que o formulário seja submetido normalmente
             var formData = $(this).serialize(); // Serializa os dados do formulário
