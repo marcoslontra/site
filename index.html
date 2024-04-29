@@ -151,7 +151,7 @@
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
                 <a id="curriculoLink" href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
-                <a id="portfolioLink" href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
+                <a id="portfolioLink" href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
     </div>
@@ -201,7 +201,7 @@
                     <h4>Introdução ao Excel</h4>
                     <p>O livro Introdução ao Excel oferece uma abordagem abrangente para aprender a usar uma das ferramentas mais poderosas do mundo dos negócios. Dividido em oito capítulos, o livro começa com uma visão geral da interface do Excel, ensinando os fundamentos do básicos ao avançados.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1lhXYXMVyRjlhgYenIPtcVzHRe1p_hU0r" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <a href="#" class="btn btn-primary btn-download" onclick="downloadPdf('https://drive.google.com/uc?export=download&id=1lhXYXMVyRjlhgYenIPtcVzHRe1p_hU0r')"><i class="fas fa-download"></i> Download</a>
             </div>
         </div>
         <div class="col-md-4">
@@ -211,7 +211,7 @@
                     <h4>Introdução à Análise de Dados</h4>
                     <p>Introdução à Análise de Dados é um guia abrangente que explora os princípios fundamentais e técnicas essenciais da análise de dados. Dividido em seis capítulos, o livro aborda desde os conceitos básicos de dados até questões éticas e de privacidade.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1Aq-k3H3kWwHQJBgKc7J2CS9Px5lmuU7L" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <a href="#" class="btn btn-primary btn-download" onclick="downloadPdf('https://drive.google.com/uc?export=download&id=1Aq-k3H3kWwHQJBgKc7J2CS9Px5lmuU7L')"><i class="fas fa-download"></i> Download</a>
             </div>
         </div>
         <div class="col-md-4">
@@ -221,7 +221,7 @@
                     <h4>Introdução ao Dashboard</h4>
                     <p>Este livro aborda de forma abrangente o tema dos dashboards, oferecendo uma introdução completa desde os conceitos básicos até as práticas avançadas. Ao longo dos capítulos, os leitores são guiados através de uma jornada que inclui a compreensão de dashboards.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1LkrVGsvy-be3XHFE-xIxsQbeqUmAVjoC" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <a href="#" class="btn btn-primary btn-download" onclick="downloadPdf('https://drive.google.com/uc?export=download&id=1LkrVGsvy-be3XHFE-xIxsQbeqUmAVjoC')"><i class="fas fa-download"></i> Download</a>
             </div>
         </div>
     </div>
@@ -312,18 +312,20 @@
             });
         });
 
-        // Script para iniciar o download automaticamente ao clicar nos links de download
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        $("#curriculoLink").click(function(){
-            if (isMobile) {
-                window.location.href = "https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b";
-            }
-        });
-        $("#portfolioLink").click(function(){
-            if (isMobile) {
-                window.location.href = "https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN";
-            }
-        });
+        // Função para fazer o download do PDF
+        function downloadPdf(url) {
+            fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'portfolio.pdf');
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link);
+            });
+        }
     });
 </script>
 
