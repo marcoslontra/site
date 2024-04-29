@@ -12,8 +12,6 @@
         /* Add your CSS code */
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f8f9fa;
         }
 
@@ -29,7 +27,6 @@
 
         @media (max-width: 768px) {
             .jumbotron {
-                background-size: 100% auto;
                 padding: 50px 0;
             }
         }
@@ -37,8 +34,6 @@
         /* Sobre Mim, Projetos, Contato */
         .section-header {
             padding: 50px 0;
-            margin-top: 30px;
-            margin-bottom: 30px;
         }
 
         .section-title {
@@ -52,18 +47,22 @@
             color: #343a40;
             font-size: 18px;
             line-height: 1.8;
-            margin-bottom: 30px; /* Adicionando margem na parte inferior */
+            margin-bottom: 30px;
         }
 
         .section-content p {
             margin-bottom: 20px;
         }
 
+        .project-item {
+            margin-bottom: 30px;
+        }
+
         .project-item img {
             transition: transform 0.3s ease-in-out;
-            max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
-            height: auto; /* Adicionado para garantir a responsividade das imagens */
-            cursor: pointer; /* Adicionado para indicar que a imagem é clicável */
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
         }
 
         .project-item img:hover {
@@ -75,9 +74,9 @@
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
-            padding: 30px; /* Reduzindo o padding para diminuir a altura */
+            padding: 30px;
             margin-top: 50px;
-            max-width: 600px; /* Limitando a largura máxima */
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -129,7 +128,7 @@
         <div class="col-md-12">
             <div class="section-content">
                 <h2 class="section-title"><b>Sobre Mim</b></h2>
-                <p>Atuei no Planejamento Inbound realizando o acompanhamento de Real Time das carteiras operacionais,
+                <p class="mb-4">Atuei no Planejamento Inbound realizando o acompanhamento de Real Time das carteiras operacionais,
                     onde realizava o desenvolvimento de Painéis Gerenciais para análise de KPI, além de contribuir para
                     estratégias de performance e entrega de SLA. Possuo experiência em análise de dados, previsão e
                     estratégia de negócios. Capacitado em desenvolver e implementar planos estratégicos que impulsionam
@@ -138,7 +137,7 @@
                     organização, utilizando minha experiência e habilidades para impulsionar o crescimento e a eficiência.
                     Estou aberto a oportunidades de networking e colaboração.</p>
                 <h3>Habilidades</h3>
-                <ul>
+                <ul class="mb-4">
                     <li>Acompanhamento de KPIs</li>
                     <li>Real Time</li>
                     <li>Desenvolvimento de relatórios e painéis analíticos</li>
@@ -295,8 +294,8 @@
 <script>
     $(document).ready(function () {
         $("#contactForm").submit(function(e) {
-            e.preventDefault(); // Evita que o formulário seja submetido normalmente
-            var formData = $(this).serialize(); // Serializa os dados do formulário
+            e.preventDefault();
+            var formData = $(this).serialize();
             $.ajax({
                 type: "POST",
                 url: "https://formspree.io/f/xzbnopvy",
