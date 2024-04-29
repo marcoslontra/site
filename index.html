@@ -314,14 +314,16 @@
 
         // Script para iniciar o download automaticamente ao clicar nos links de download
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        $("#curriculoLink").click(function(){
+        $(".btn-download").click(function(){
             if (isMobile) {
-                window.location.href = "https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b";
-            }
-        });
-        $("#portfolioLink").click(function(){
-            if (isMobile) {
-                window.location.href = "https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN";
+                var url = $(this).attr("href");
+                var fileName = $(this).text().trim().split(" ")[4];
+                var link = document.createElement("a");
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         });
     });
