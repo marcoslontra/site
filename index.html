@@ -12,8 +12,6 @@
         /* Add your CSS code */
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f8f9fa;
         }
 
@@ -29,7 +27,6 @@
 
         @media (max-width: 768px) {
             .jumbotron {
-                background-size: 100% auto;
                 padding: 50px 0;
             }
         }
@@ -37,8 +34,6 @@
         /* Sobre Mim, Projetos, Contato */
         .section-header {
             padding: 50px 0;
-            margin-top: 30px;
-            margin-bottom: 30px;
         }
 
         .section-title {
@@ -52,18 +47,22 @@
             color: #343a40;
             font-size: 18px;
             line-height: 1.8;
-            margin-bottom: 30px; /* Adicionando margem na parte inferior */
+            margin-bottom: 30px;
         }
 
         .section-content p {
             margin-bottom: 20px;
         }
 
+        .project-item {
+            margin-bottom: 30px;
+        }
+
         .project-item img {
             transition: transform 0.3s ease-in-out;
-            max-width: 100%; /* Adicionado para garantir a responsividade das imagens */
-            height: auto; /* Adicionado para garantir a responsividade das imagens */
-            cursor: pointer; /* Adicionado para indicar que a imagem é clicável */
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
         }
 
         .project-item img:hover {
@@ -75,9 +74,9 @@
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
-            padding: 30px; /* Reduzindo o padding para diminuir a altura */
+            padding: 30px;
             margin-top: 50px;
-            max-width: 600px; /* Limitando a largura máxima */
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -129,7 +128,7 @@
         <div class="col-md-12">
             <div class="section-content">
                 <h2 class="section-title"><b>Sobre Mim</b></h2>
-                <p>Atuei no Planejamento Inbound realizando o acompanhamento de Real Time das carteiras operacionais,
+                <p class="mb-4">Atuei no Planejamento Inbound realizando o acompanhamento de Real Time das carteiras operacionais,
                     onde realizava o desenvolvimento de Painéis Gerenciais para análise de KPI, além de contribuir para
                     estratégias de performance e entrega de SLA. Possuo experiência em análise de dados, previsão e
                     estratégia de negócios. Capacitado em desenvolver e implementar planos estratégicos que impulsionam
@@ -138,7 +137,7 @@
                     organização, utilizando minha experiência e habilidades para impulsionar o crescimento e a eficiência.
                     Estou aberto a oportunidades de networking e colaboração.</p>
                 <h3>Habilidades</h3>
-                <ul>
+                <ul class="mb-4">
                     <li>Acompanhamento de KPIs</li>
                     <li>Real Time</li>
                     <li>Desenvolvimento de relatórios e painéis analíticos</li>
@@ -150,10 +149,8 @@
                     <li>Desenvolvimento de planos de ação baseados no estudo de KPI</li>
                     <li>Desenvolvimento de estratégias que agreguem na entrega de SLA</li>
                 </ul>
-                <div class="d-flex justify-content-center"> <!-- Adicionado para alinhar os botões horizontalmente -->
-                    <a id="curriculoLink" href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a>
-                    <a id="portfolioLink" href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
-                </div>
+                <a id="curriculoLink" href="https://drive.google.com/uc?export=download&id=121p66BI4l51ujTgVpZFic4_y-HOh7C8b" class="btn btn-primary btn-download"><i class="far fa-file-alt"></i> Clique aqui para baixar meu Currículo</a><br>
+                <a id="portfolioLink" href="https://drive.google.com/uc?export=download&id=16aN5SMfVk0NfIVGzc12vTajVY7KYFKqN" download="portfolio-marcos.pdf" class="btn btn-primary btn-download"><i class="far fa-folder-open"></i> Clique aqui para baixar meu Portfólio</a>
             </div>
         </div>
     </div>
@@ -203,7 +200,9 @@
                     <h4>Introdução ao Excel</h4>
                     <p>O livro Introdução ao Excel oferece uma abordagem abrangente para aprender a usar uma das ferramentas mais poderosas do mundo dos negócios. Dividido em oito capítulos, o livro começa com uma visão geral da interface do Excel, ensinando os fundamentos do básicos ao avançados.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1lhXYXMVyRjlhgYenIPtcVzHRe1p_hU0r" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <div class="text-center"> <!-- Add this line -->
+                    <a href="https://drive.google.com/uc?export=download&id=1lhXYXMVyRjlhgYenIPtcVzHRe1p_hU0r" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                </div> <!-- Add this line -->
             </div>
         </div>
         <div class="col-md-4">
@@ -213,7 +212,9 @@
                     <h4>Introdução à Análise de Dados</h4>
                     <p>Introdução à Análise de Dados é um guia abrangente que explora os princípios fundamentais e técnicas essenciais da análise de dados. Dividido em seis capítulos, o livro aborda desde os conceitos básicos de dados até questões éticas e de privacidade.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1Aq-k3H3kWwHQJBgKc7J2CS9Px5lmuU7L" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <div class="text-center"> <!-- Add this line -->
+                    <a href="https://drive.google.com/uc?export=download&id=1Aq-k3H3kWwHQJBgKc7J2CS9Px5lmuU7L" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                </div> <!-- Add this line -->
             </div>
         </div>
         <div class="col-md-4">
@@ -223,7 +224,9 @@
                     <h4>Introdução ao Dashboard</h4>
                     <p>Este livro aborda de forma abrangente o tema dos dashboards, oferecendo uma introdução completa desde os conceitos básicos até as práticas avançadas. Ao longo dos capítulos, os leitores são guiados através de uma jornada que inclui a compreensão de dashboards.</p>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1LkrVGsvy-be3XHFE-xIxsQbeqUmAVjoC" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                <div class="text-center"> <!-- Add this line -->
+                    <a href="https://drive.google.com/uc?export=download&id=1LkrVGsvy-be3XHFE-xIxsQbeqUmAVjoC" class="btn btn-primary btn-download"><i class="fas fa-download"></i> Download</a>
+                </div> <!-- Add this line -->
             </div>
         </div>
     </div>
@@ -297,8 +300,8 @@
 <script>
     $(document).ready(function () {
         $("#contactForm").submit(function(e) {
-            e.preventDefault(); // Evita que o formulário seja submetido normalmente
-            var formData = $(this).serialize(); // Serializa os dados do formulário
+            e.preventDefault();
+            var formData = $(this).serialize();
             $.ajax({
                 type: "POST",
                 url: "https://formspree.io/f/xzbnopvy",
